@@ -1,9 +1,7 @@
-version: '3.9'
-
 services:
-  frontend:
-    container_name: frontend
-    image: frontend
+  dy_frontend:
+    container_name: dy_frontend
+    image: dy_frontend
     build:
       context: ./frontend
       dockerfile: frontend.dockerfile
@@ -13,19 +11,19 @@ services:
       - NEXT_PUBLIC_API_URL=http://localhost:4000
     restart: always
     depends_on:
-      - backend
-  backend:
-    container_name: backend
-    image: backend
+      - dy_backend
+  dy_backend:
+    container_name: dy_backend
+    image: dy_backend
     build:
       context: ./backend
       dockerfile: backend.dockerfile
     ports:
       - 4000:4000
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
-  db:
-    container_name: db
+      - DATABASE_URL=postgresql://postgres:postgres@dy_database:5432/postgres?schema=public
+  dy_database:
+    container_name: dy_database
     image: postgres:16
     restart: always
     environment:

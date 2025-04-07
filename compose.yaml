@@ -21,7 +21,7 @@ services:
     ports:
       - 4000:4000
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@dy_database:5432/postgres?schema=public
+      - DATABASE_URL=postgresql://postgres:postgres@dy_database:5436/postgres?schema=public
     depends_on:
     - dy_database
   dy_database:
@@ -33,7 +33,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - 5434:5434
+      - 5436:5436
     volumes:
       - pgdata:/var/lib/postgresql/data
 
